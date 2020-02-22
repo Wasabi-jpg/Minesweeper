@@ -13,7 +13,10 @@ void setup ()
     Interactive.make( this );
     
     //your code to initialize buttons goes here
-    
+    buttons = new MSButton[NUM_ROWS][NUM_COLS];
+    for(r = 0; r < NUM_ROWS; r++)
+        for(c = 0; c < NUM_COLS; c++)
+            buttons[r][c] = new MSButton;
     
     
     setMines();
