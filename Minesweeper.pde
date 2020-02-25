@@ -117,6 +117,12 @@ public class MSButton
     {
         clicked = true;
         //your code here
+        if(mouseButton= RIGHT){
+            flagged = !flagged;
+            if(flagged == false){
+                clicked = false;
+            }
+        }
     }
     public void draw () 
     {    
