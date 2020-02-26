@@ -30,7 +30,7 @@ public void setMines()
     int col = (int)(Math.random()*NUM_COLS);
     if(!mines.contains(buttons[row][col])){
         mines.add(buttons[row][col]);
-        //System.out.println(row + "," + col);
+        
     }
 }
 
@@ -117,12 +117,21 @@ public class MSButton
     {
         clicked = true;
         //your code here
-        if(mouseButton= RIGHT){
+        if(mouseButton== RIGHT){
             flagged = !flagged;
             if(flagged == false){
-                clicked = false;
+            clicked = false;
+        }
+        }else if(mines.contains(this)){
+                displayLosingMessage();
+        }else if(countMines(myRow,myCol)>0){
+            setLabel(countMines(myRow,myCol));
+        }else{
+            if(isValid(myRow-1,myCol-1) == true && buttons[myRow-1][myCol-1].clicked == false){
+                buttons[myRow-1][myCol-1].mousePressed();
             }
         }
+        
     }
     public void draw () 
     {    
