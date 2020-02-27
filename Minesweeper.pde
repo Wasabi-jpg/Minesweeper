@@ -56,7 +56,7 @@ public void displayWinningMessage()
 public boolean isValid(int r, int c)
 {
     //your code here
-    if(r>NUM_ROWS||c>NUM_COLS||r<0||c<0){
+    if(r>=NUM_ROWS||c>=NUM_COLS||r<0||c<0){
         return false;
     }
     return true;
@@ -127,8 +127,29 @@ public class MSButton
         }else if(countMines(myRow,myCol)>0){
             setLabel(countMines(myRow,myCol));
         }else{
-            if(isValid(myRow-1,myCol-1) == true && buttons[myRow-1][myCol-1].clicked == false){
+            if(isValid(myRow-1,myCol-1)&& buttons[myRow-1][myCol-1].clicked == false){
                 buttons[myRow-1][myCol-1].mousePressed();
+            }
+            if(isValid(myRow-1,myCol)&& buttons[myRow-1][myCol].clicked == false){
+                buttons[myRow-1][myCol].mousePressed();
+            }
+            if(isValid(myRow-1,myCol+1)&& buttons[myRow-1][myCol+1].clicked == false){
+                buttons[myRow-1][myCol+1].mousePressed();
+            }
+            if(isValid(myRow,myCol-1)&& buttons[myRow][myCol-1].clicked == false){
+                buttons[myRow][myCol-1].mousePressed();
+            }
+            if(isValid(myRow,myCol+1)&& buttons[myRow][myCol+1].clicked == false){
+                buttons[myRow][myCol+1].mousePressed();
+            }
+            if(isValid(myRow+1,myCol-1)&& buttons[myRow+1][myCol-1].clicked == false){
+                buttons[myRow+1][myCol-1].mousePressed();
+            }
+            if(isValid(myRow+1,myCol)&& buttons[myRow+1][myCol].clicked == false){
+                buttons[myRow+1][myCol].mousePressed();
+            }
+            if(isValid(myRow+1,myCol+1)&& buttons[myRow+1][myCol+1].clicked == false){
+                buttons[myRow+1][myCol+1].mousePressed();
             }
         }
         
