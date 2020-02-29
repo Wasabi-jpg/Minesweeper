@@ -30,7 +30,6 @@ public void setMines()
     int col = (int)(Math.random()*NUM_COLS);
     if(!mines.contains(buttons[row][col])){
         mines.add(buttons[row][col]);
-        
     }
 }
 
@@ -43,7 +42,14 @@ public void draw ()
 public boolean isWon()
 {
     //your code here
-    return false;
+    for(int r = 0; r < NUM_ROWS; r++){
+        for(int  c = 0; c < NUM_COLS; c++){
+            if(buttons[r][c].isClicked()&&mines.contains(buttons[r][c]))
+                return false;
+        }
+    }
+    return true;
+    
 }
 public void displayLosingMessage()
 {
@@ -180,5 +186,9 @@ public class MSButton
     public boolean isFlagged()
     {
         return flagged;
+    }
+    public boolean isClicked()
+    {
+        return clicked;
     }
 }
