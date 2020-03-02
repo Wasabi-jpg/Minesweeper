@@ -58,6 +58,14 @@ public void displayLosingMessage()
 public void displayWinningMessage()
 {
     //your code here
+    if(isWon()==true){
+        buttons[(NUM_ROWS/3)-1][(NUM_COLS/3)-1].setLabel("Y");
+        buttons[(NUM_ROWS/3)-1][NUM_COLS/3].setLabel("O");
+        buttons[(NUM_ROWS/3)-1][(NUM_COLS/3)+1].setLabel("U");
+        buttons[NUM_ROWS/3][(NUM_COLS/3)-1].setLabel("W");
+        buttons[NUM_ROWS/3][NUM_COLS/3].setLabel("I");
+        buttons[NUM_ROWS/3][(NUM_COLS/3)+1].setLabel("N");
+    }
 }
 public boolean isValid(int r, int c)
 {
