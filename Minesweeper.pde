@@ -26,10 +26,13 @@ void setup ()
 public void setMines()
 {
     //your code
+    //for loop to set more mines
+    for(int i = 0; i < 2; i++){
     int row = (int)(Math.random()*NUM_ROWS);
     int col = (int)(Math.random()*NUM_COLS);
     if(!mines.contains(buttons[row][col])){
         mines.add(buttons[row][col]);
+    }
     }
 }
 
@@ -58,10 +61,34 @@ public boolean isWon()
 public void displayLosingMessage()
 {
     //your code here
+    /*int error = 0;
+    for(int r = 0; r < NUM_ROWS; r++){
+        for(int c = 0; c < NUM_COLS; c++){
+            if(buttons[r][c].clicked==true&&mines.contains(buttons[r][c])){
+                error++;
+            }
+        }
+    }*/
+    if(isWon()==false){
+        buttons[(NUM_ROWS/3)-1][(NUM_COLS/3)-1].setLabel("Y");
+        buttons[(NUM_ROWS/3)-1][NUM_COLS/3].setLabel("O");
+        buttons[(NUM_ROWS/3)-1][(NUM_COLS/3)+1].setLabel("U");
+        buttons[NUM_ROWS/3][(NUM_COLS/3)-1].setLabel("L");
+        buttons[NUM_ROWS/3][NUM_COLS/3].setLabel("O");
+        buttons[NUM_ROWS/3][(NUM_COLS/3)+1].setLabel("S");
+        buttons[NUM_ROWS/3][(NUM_COLS/3)+2].setLabel("T");
+        for(int r = 0; r < NUM_ROWS; r++){
+            for(int c = 0; c < NUM_COLS; c++){
+                if(mines.contains(buttons[r][c]))
+                    fill(255,0,0);
+                rect(buttons[r][c].x,buttons[r][c].y,buttons[r][c].width,buttons[r][c].height);
+            }
+        }
+    }
 }
 public void displayWinningMessage()
 {
-    //your code here (fix)
+    //your code here
     if(isWon()==true){
         buttons[(NUM_ROWS/3)-1][(NUM_COLS/3)-1].setLabel("Y");
         buttons[(NUM_ROWS/3)-1][NUM_COLS/3].setLabel("O");
