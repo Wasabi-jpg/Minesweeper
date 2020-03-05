@@ -27,7 +27,7 @@ public void setMines()
 {
     //your code
     //for loop to set more mines
-    for(int i = 0; i < 2; i++){
+    for(int i = 0; i < 5; i++){
     int row = (int)(Math.random()*NUM_ROWS);
     int col = (int)(Math.random()*NUM_COLS);
     if(!mines.contains(buttons[row][col])){
@@ -77,13 +77,14 @@ public void displayLosingMessage()
         buttons[NUM_ROWS/3][NUM_COLS/3].setLabel("O");
         buttons[NUM_ROWS/3][(NUM_COLS/3)+1].setLabel("S");
         buttons[NUM_ROWS/3][(NUM_COLS/3)+2].setLabel("T");
-        for(int r = 0; r < NUM_ROWS; r++){
-            for(int c = 0; c < NUM_COLS; c++){
-                if(mines.contains(buttons[r][c]))
-                    fill(255,0,0);
-                rect(buttons[r][c].x,buttons[r][c].y,buttons[r][c].width,buttons[r][c].height);
+        
+    }
+    for(int r = 0; r <= NUM_ROWS; r++){
+            for(int c = 0; c <= NUM_COLS; c++){
+                buttons[r][c].mousePressed();
+                System.out.println(r + "," + c);
+            
             }
-        }
     }
 }
 public void displayWinningMessage()
