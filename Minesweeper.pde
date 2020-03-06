@@ -61,14 +61,7 @@ public boolean isWon()
 public void displayLosingMessage()
 {
     //your code here
-    /*int error = 0;
-    for(int r = 0; r < NUM_ROWS; r++){
-        for(int c = 0; c < NUM_COLS; c++){
-            if(buttons[r][c].clicked==true&&mines.contains(buttons[r][c])){
-                error++;
-            }
-        }
-    }*/
+    
     if(isWon()==false){
         buttons[(NUM_ROWS/3)-1][(NUM_COLS/3)-1].setLabel("Y");
         buttons[(NUM_ROWS/3)-1][NUM_COLS/3].setLabel("O");
@@ -79,13 +72,8 @@ public void displayLosingMessage()
         buttons[NUM_ROWS/3][(NUM_COLS/3)+2].setLabel("T");
         
     }
-    for(int r = 0; r <= NUM_ROWS; r++){
-            for(int c = 0; c <= NUM_COLS; c++){
-                buttons[r][c].mousePressed();
-                System.out.println(r + "," + c);
-            
-            }
-    }
+   
+    
 }
 public void displayWinningMessage()
 {
@@ -170,6 +158,15 @@ public class MSButton
         }
         }else if(mines.contains(this)){
                 displayLosingMessage();
+                for(int r = 0; r < NUM_ROWS; r++){
+            for(int c = 0; c < NUM_COLS; c++){
+                if(mines.contains(buttons[r][c])||!mines.contains(buttons[r][c])){
+                    buttons[r][c].mousePressed();
+                    System.out.println(r+","+c);
+                }
+                
+            }
+        }
         }else if(countMines(myRow,myCol)>0){
             setLabel(countMines(myRow,myCol));
         }else{
