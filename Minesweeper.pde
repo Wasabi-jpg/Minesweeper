@@ -3,6 +3,7 @@ private final static int NUM_ROWS = 10;
 private final static int NUM_COLS =10;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> mines = new ArrayList <MSButton>();; //ArrayList of just the minesweeper buttons that are mined
+private boolean clickable = true;
 
 void setup ()
 {
@@ -70,18 +71,15 @@ public void displayLosingMessage()
         buttons[NUM_ROWS/3][NUM_COLS/3].setLabel("O");
         buttons[NUM_ROWS/3][(NUM_COLS/3)+1].setLabel("S");
         buttons[NUM_ROWS/3][(NUM_COLS/3)+2].setLabel("T");
-        for(int i = 0; i < mines.size();i++){
-            
-        }
         for(int r = 0; r<NUM_ROWS; r++){
             for(int c = 0; c<NUM_COLS; c++){
                 if(mines.contains(buttons[r][c])){
-                    buttons[r][c].mousePressed();
+                    buttons[r][c].clicked=true;
                 }
             }
         }
     }
-   
+   clickable = false;
     
 }
 public void displayWinningMessage()
@@ -95,6 +93,7 @@ public void displayWinningMessage()
         buttons[NUM_ROWS/3][NUM_COLS/3].setLabel("I");
         buttons[NUM_ROWS/3][(NUM_COLS/3)+1].setLabel("N");
     }
+    clickable = false;
 }
 public boolean isValid(int r, int c)
 {
@@ -158,19 +157,21 @@ public class MSButton
     // called by manager
     public void mousePressed () 
     {
-        clicked = true;
+        if(clickable==true&&mouseButton!=RIGHT){
+             clicked = true;
+        }
         //your code here
-        if(mouseButton== RIGHT){
+        if(mouseButton==RIGHT&&clickable==true&&clicked==false){
             flagged = !flagged;
             if(flagged == false){
             clicked = false;
         }
-        }else if(mines.contains(this)){
+        }else if(mines.contains(this)&&clickable==true){
                 displayLosingMessage();
         
-        }else if(countMines(myRow,myCol)>0){
+        }else if(countMines(myRow,myCol)>0&&clickable==true){
             setLabel(countMines(myRow,myCol));
-        }else{
+        }else if(clickable==true){
             if(isValid(myRow-1,myCol-1)&& buttons[myRow-1][myCol-1].clicked == false){
                 buttons[myRow-1][myCol-1].mousePressed();
             }
