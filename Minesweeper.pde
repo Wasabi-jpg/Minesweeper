@@ -70,6 +70,9 @@ public void displayLosingMessage()
         buttons[NUM_ROWS/3][NUM_COLS/3].setLabel("O");
         buttons[NUM_ROWS/3][(NUM_COLS/3)+1].setLabel("S");
         buttons[NUM_ROWS/3][(NUM_COLS/3)+2].setLabel("T");
+        for(int i = 0; i < mines.size();i++){
+            
+        }
         for(int r = 0; r<NUM_ROWS; r++){
             for(int c = 0; c<NUM_COLS; c++){
                 if(mines.contains(buttons[r][c])){
